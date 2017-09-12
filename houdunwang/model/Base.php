@@ -78,6 +78,12 @@ class Base{
         }
     }
 
+    /**
+     * 排序方法
+     * @param string $a 按照那个标签排序
+     * @param string $b 排序的方式升序还是降序，默认是升序
+     * @return bool|mixed返回查询到的结果
+     */
     public function order($a='',$b='asc'){
         //1,$a为要排序的字段，这个必须要有
         //2,if语句判断它是否为空，如果为空说明没有传如排序字段，返回false，下面的代码不再执行
@@ -299,15 +305,18 @@ class Base{
         $data = $this->query($sql);
         //1,使用if判断得到的结果是否为空
         //2,如果不为空执行if里面的代码
-//        if (!empty($data)){
+        if (!empty($data)){
             //测试是否执行到if里面
 //            dd(1);
             //3,将获取到的数据存到私有属性data里面
-            $this->data = $data;
+//            $this->data = $data;
             //1,将这个类以对象的形式返回
-//            return $this;
-//        }
-        return $this;
+            if (count($data)==1){
+                return current($data);
+            }
+            return $data;
+        }
+        return [];
     }
 
 
@@ -326,6 +335,7 @@ class Base{
         //1,通过getPk()我们来获取到$table这个数据表的主键
         //2,方便我们直接设置主键的值，通过相应的语句，主键值作为条件查找数据
         $pk = $this->getPk();
+//        dd($pk);
         //1,将完整的sql语句写入其中，下面用来执行查找
         //2,$id是用来查找的那个主键的值
         //$sql = "select * from {$this->table} where {$pk} = {$id}";
@@ -334,6 +344,7 @@ class Base{
         //2,将sql语句中的where条件语句存储到私有变量where属性中
         //3,$pk是我们获得到的主键名，$id是传入的要查找那个主键的参数
         $this->where("$pk={$id}");
+//        dd($this->where);
         //1,测试得到的where条件语句是否正确
 //        dd($this->where);// where id=5
         //1,在这个方法中声明一个变量用来存储查询的指定字段
@@ -344,6 +355,7 @@ class Base{
         //1,开始拼接完整的sql查询语句
         //2,下面可以直接在query方法中使用查询
         $sql = "select {$field} from {$this->table} {$this->where}";
+//        dd($sql);
         //1,测试拼接是否正确，能够执行
         //dd($sql);//select * from article  where id=5
         //1,执行查询

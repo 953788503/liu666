@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3103108436e1102f2bb5748ff41e824",
+    "content-hash": "fdb293cc3c2b783a237fa414abe966ab",
     "packages": [
         {
             "name": "filp/whoops",
@@ -68,6 +68,54 @@
             "time": "2017-08-03T18:23:40+00:00"
         },
         {
+            "name": "gregwar/captcha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Gregwar/Captcha.git",
+                "reference": "5c045b30b250b3ffbe86c4d21e56cf79abe4a079"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/Gregwar/Captcha/5c045b30b250b3ffbe86c4d21e56cf79abe4a079.zip",
+                "reference": "5c045b30b250b3ffbe86c4d21e56cf79abe4a079",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "captcha",
+            "autoload": {
+                "psr-4": {
+                    "Gregwar\\Captcha\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com/"
+                },
+                {
+                    "name": "Jeremy Livingston",
+                    "email": "jeremy.j.livingston@gmail.com"
+                }
+            ],
+            "description": "Captcha generator",
+            "homepage": "https://github.com/Gregwar/Captcha",
+            "keywords": [
+                "bot",
+                "captcha",
+                "spam"
+            ],
+            "time": "2017-06-09T13:01:36+00:00"
+        },
+        {
             "name": "psr/log",
             "version": "dev-master",
             "source": {
@@ -119,7 +167,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "filp/whoops": 20
+        "filp/whoops": 20,
+        "gregwar/captcha": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

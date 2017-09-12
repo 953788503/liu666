@@ -112,7 +112,7 @@ class Entry extends Controller {
         //2,返回排序好的数组
         $data = Article::order('id');
         //1,输出这个排序好的数组
-        dd($data);
+//        dd($data);
 //************************************************************************
         $test = 'houdunwang';
         //1,compact('变量名'),

@@ -201,6 +201,26 @@ if (!function_exists('c')){
     }
 }
 
+if (!function_exists('u')){
+    /**
+     * 跳转的u函数
+     * ?s=模块/控制器/方法
+     * 用来分辨出地址栏的s参数中有几个参数，来确定自己要调用那个模块中的那个类中的那个方法
+     */
+    function u($url){
+        //测试是否能调用这个方法
+        //dd($url);
+        $info = explode('.',$url);
+        if (count($info)==2){
+            return "index.php?s=".MODULE."/{$info[0]}/{$info[1]}";
+        }
+        if (count($info)==1){
+            return "index.php?s=".MODULE."/".CONTROLLER."/{$info[0]}";
+        }
+        return "index.php?s={$info[0]}/{$info[1]}/{$info[2]}";
+    }
+}
+
 
 
 

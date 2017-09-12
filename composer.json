@@ -10,7 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "filp/whoops": "^2.0@dev"
+        "filp/whoops": "^2.0@dev",
+        "gregwar/captcha": "dev-master"
     },
     "autoload":{
         "files":[

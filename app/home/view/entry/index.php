@@ -17,6 +17,7 @@
 		<p>You have successfully created your frame application</p>
 		<p>
 			<a class="btn btn-primary btn-lg">About Me</a>
+            <a href="?s=admin/entry/index" class="btn btn-primary btn-lg">后台管理</a>
 		</p>
 	</div>
 </div>
