@@ -15,9 +15,12 @@ class View{
      */
     public function __call( $name , $arguments )
     {
+        return $this->parseAction($name,$arguments);
         //1，静态调用parseAction方法
         //2,parseAction方法是用来访问Base里面的$name方法的；
-        return  self::parseAction($name.$arguments);
+//        self::parseAction($name.$arguments);
+        //在这里返回对象不能使用静态调用的方式,不然会报错
+//        return  self::parseAction($name.$arguments);
     }
 
     /**
@@ -29,11 +32,13 @@ class View{
      */
     public static function __callStatic( $name , $arguments )
     {
+
         //测试在静态调用不存在的方法时，是否执行了这个类;
 //        dd('callstatic');
         //1，静态调用parseAction方法
         //2,parseAction方法是用来访问Base里面的$name方法的；
         return  self::parseAction($name,$arguments);
+
     }
 
     /**

@@ -28,6 +28,8 @@ class Base{
     //1,定义私有属性where,用来存储sql语句的where条件
     //2,方便根据多个条件查找数据库里面的数据
     private $where='';
+    //1，声明一个私有变量用来存储用户通过某个字段对数据排序
+    private $order='';
 
     public function __construct($class)
     {
@@ -84,16 +86,11 @@ class Base{
      * @param string $b 排序的方式升序还是降序，默认是升序
      * @return bool|mixed返回查询到的结果
      */
-    public function order($a='',$b='asc'){
+    public function order($a=''){
         //1,$a为要排序的字段，这个必须要有
         //2,if语句判断它是否为空，如果为空说明没有传如排序字段，返回false，下面的代码不再执行
         if (empty($a)){
             //1,没有传如排序字段，返回false，下面的代码不再执行
-            return false;
-        }
-        //1,排序语句中排序条件只认这两个，如果不是这两个，返回false
-        if ($b!='asc' && $b!='desc'){
-            //返回false，下面代码不再执行
             return false;
         }
         //1,在这个方法中声明一个变量用来存储查询的指定字段
@@ -101,10 +98,10 @@ class Base{
         $field = $this->field ? : '*';
         //1,拼接排序的语句，必须有一个要排序的参数
         //2,拼接完后可以调用query()方法直接查询
-        $sql="select $field from {$this->table} {$this->where} order by $a $b";
+        $sql="select $field from {$this->table} {$this->where} order by $a";
         //1，开始执行自己声明的方法query，开始查找
         //2,将获取到的数据存到私有属性data里面
-        $data = $this->query($sql);;
+        $data = $this->query($sql);
         //1,将这个类以对象形式返回
         return $data;
 

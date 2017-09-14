@@ -207,17 +207,21 @@ if (!function_exists('u')){
      * ?s=模块/控制器/方法
      * 用来分辨出地址栏的s参数中有几个参数，来确定自己要调用那个模块中的那个类中的那个方法
      */
-    function u($url){
+    function u($url,$args=[]){
         //测试是否能调用这个方法
         //dd($url);
+        //数组['gid'=>$v['gid'],'a'=>'b','c'=>'d']
+        //数组通过http_build_query($args)转换后的结果gid=4&a=b&c=d
+        $args=http_build_query($args);
+        //gid=4&a=b&c=d
         $info = explode('.',$url);
         if (count($info)==2){
-            return "index.php?s=".MODULE."/{$info[0]}/{$info[1]}";
+            return "index.php?s=".MODULE."/{$info[0]}/{$info[1]}" . "&{$args}";
         }
         if (count($info)==1){
-            return "index.php?s=".MODULE."/".CONTROLLER."/{$info[0]}";
+            return "index.php?s=".MODULE."/".CONTROLLER."/{$info[0]}" . "&{$args}";
         }
-        return "index.php?s={$info[0]}/{$info[1]}/{$info[2]}";
+        return "index.php?s={$info[0]}/{$info[1]}/{$info[2]}" . "&{$args}";
     }
 }
 

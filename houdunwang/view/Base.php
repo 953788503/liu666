@@ -30,7 +30,7 @@ class Base{
     //显示模版
     public function make(){
         //1,测试是否访问到这里
-        //dd('显示模版');
+//        dd('显示模版');
         //2，测试是否能够调用Boot类里面定义的常量
         //dd(MODULE);//home
         //dd(CONTROLLER);//entry
@@ -46,6 +46,7 @@ class Base{
         //3,c($var)是在助手函数中创建的一个方法，用来获得这个文件的后缀名
         $this->file = "../app/".MODULE."/view/".strtolower(CONTROLLER)."/".ACTION.".".c('view.suffix');
         //将这个类以对象形式返回
+//        dd($this->file);die();
         return $this;
 
     }
@@ -58,6 +59,7 @@ class Base{
      */
     public function __toString()
     {
+//        dd($this->file);die();
         //1,Boot类里面echo一个对象，
         extract($this->data);
         include $this->file;

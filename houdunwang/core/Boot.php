@@ -67,6 +67,7 @@ class Boot{
         //2,call_user_func_array([new $class , $action ],[])相当与代码(new $class)->$action();
         echo call_user_func_array([new $class , $action ],[]);
 //        call_user_func_array([new $class , $action ],[]);
+//        call_user_func_array([new $class , $action ],[]);
         //1,测试是不是随便输出一个对象就会触发Base类里面的__tostring方法
         //2,结果不是，我在这个文件中声明了一个类，用来作为对象，得到的答案是如果a这个类中有__tostring这个方法，那么他会触发a类里面的这个方法，如果没有的话会报错
 //        echo (new a());

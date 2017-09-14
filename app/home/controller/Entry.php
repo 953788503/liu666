@@ -20,11 +20,15 @@ use houdunwang\view\View;
 //2,composer.json里面已经加载了他的目录路径
 //3,要调用一个类必须先加载好他的命名空间和路径，两个缺一不可，不然会报错
 use system\model\Article;
+use system\model\Student;
 
 class Entry extends Controller {
     //1,声明普通方法index
     //2,用于测试在地址栏改变参数，是否能访问到这个方法
     public function index(){
+        //1，获得学生表的全部数据
+        //2,因为要将所有的学生信息输入到页面中，就需要获得到含有学生所有信息的数组
+        $data=Student::query("select * from student s join grade g on s.gid=g.gid join material m on s.mid=m.mid");
         //1，测试是否能从单一入口文件访问到这个类
 //        echo 'indexdd';
 
@@ -70,13 +74,13 @@ class Entry extends Controller {
 //*******************测试数据新增******************************************
         //1，往数据库新增数据，我们需要传入的是一个含有标签和内容的数组
         //2,我们将标签作为键名，内容作为键值来写这个数组
-        $data = [
-            'id'=>6,
-            'name' => '亚索',
-            'age' => 22,
-            'sex' => '男',
-            'hobby' => '篮球'
-        ];
+//        $data = [
+//            'id'=>6,
+//            'name' => '亚索',
+//            'age' => 22,
+//            'sex' => '男',
+//            'hobby' => '篮球'
+//        ];
         //1,调用base里面的insert方法，像数据库中插入数据
         //2,会返回对数据库中的几条数据进行了操作
 //        $res = Article::insert($data);
@@ -110,7 +114,7 @@ class Entry extends Controller {
 //************************测试排序*************************************
         //1,调用base里面的order方法,必须传入一个排序字段，不然会报错
         //2,返回排序好的数组
-        $data = Article::order('id');
+//        $data = Article::order('id');
         //1,输出这个排序好的数组
 //        dd($data);
 //************************************************************************
@@ -126,7 +130,7 @@ class Entry extends Controller {
         //1，测试它访问到了那里
         //2,访问的分别是View类里面的__callStatic方法再到parseAction方法在访问到Base类里面的with方法
         //View::with(compact('test'));
-        return View::with(compact('test'))->make();
+        return View::with(compact('data'))->make();
 
     }
     //1,声明普通方法add
